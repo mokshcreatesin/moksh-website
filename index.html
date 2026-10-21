@@ -219,7 +219,8 @@
     transition:transform .4s ease, opacity .4s ease; }
   .cat-pill::before{ content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(145deg,var(--green),var(--green-deep)); opacity:0; transition:opacity .3s ease; }
   .cat-pill[data-d="1"]{ transform:scale(.97); opacity:.86; }
-  .cat-pill.is-center{ transform:scale(1); opacity:1; z-index:2; }
+  .cat-pill.is-center{ transform:scale(1.06); opacity:1; z-index:2; }
+  .cat-pill.is-center::before{ opacity:1; }
   @media (hover:hover){ .cat-pill:hover{ transform:scale(1.06); opacity:1; z-index:3; } .cat-pill:hover::before{ opacity:1; } }
   .cat-pill:focus-visible{ transform:scale(1.06); opacity:1; z-index:3; }
   .cat-pill:focus-visible::before{ opacity:1; }
@@ -270,7 +271,6 @@
   .case-photographer{ display:block; margin-top:6px; font-size:11px; color:var(--muted); font-weight:600; }
   .case-bottom p{ max-height:0; overflow:hidden; margin-top:0; font-size:12.5px; line-height:1.45; color:rgba(243,241,234,.82); max-width:30ch; opacity:0; transform:translateY(6px); transition:max-height .35s ease, margin-top .35s ease, opacity .25s ease, transform .25s ease; }
   @media (hover:hover){ .case-card:hover .case-bottom p{ max-height:8em; margin-top:6px; opacity:1; transform:none; } }
-  @media (hover:none){ .case-bottom p{ max-height:8em; margin-top:6px; opacity:1; transform:none; } }
   @media (max-width:1000px){ .project-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:600px){ .project-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .case-card{ aspect-ratio:4/5; } }
   .subsection-head{ display:flex; align-items:baseline; justify-content:space-between; gap:20px; margin:clamp(46px,7vw,80px) 0 22px; }
@@ -905,11 +905,13 @@ function setActiveCat(i, scrollTo){
 catPrev.addEventListener('click', function(){ setActiveCat(catActive - 1, true); });
 catNext.addEventListener('click', function(){ setActiveCat(catActive + 1, true); });
 
-// hovering / focusing a pill also "navigates" to it
-catTrack.querySelectorAll('.cat-pill').forEach(function(p, idx){
-  p.addEventListener('mouseenter', function(){ setActiveCat(idx); });
-  p.addEventListener('focus', function(){ setActiveCat(idx); });
-});
+function bindCategoryPillHandlers(){
+  catTrack.querySelectorAll('.cat-pill').forEach(function(p, idx){
+    p.addEventListener('click', function(){ setActiveCat(idx, true); });
+    p.addEventListener('mouseenter', function(){ setActiveCat(idx); });
+    p.addEventListener('focus', function(){ setActiveCat(idx); });
+  });
+}
 
 // swiping on touch: whichever pill sits closest to the middle becomes the active one
 catTrack.addEventListener('scroll', function(){
@@ -1139,6 +1141,7 @@ if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitWordmark
 
 /* ============ init ============ */
 renderCategories();
+bindCategoryPillHandlers();
 setActiveCat(0);
 renderProjects();
 renderLiveEvents();
