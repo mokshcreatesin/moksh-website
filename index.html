@@ -130,9 +130,6 @@
   @media (hover:hover){
     .case-card:hover .frame img{ filter:grayscale(1) contrast(1.05); transform:scale(1.07) translateZ(0); }
   }
-  @media (hover:none){
-    .case-card.is-live .frame img{ filter:grayscale(1) contrast(1.05); transform:scale(1.04) translateZ(0); }
-  }
 
   /* ---- scroll progress ---- */
   #progress{ position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--metal-1),var(--metal-4),var(--metal-1)); z-index:120; width:0%; }
@@ -275,7 +272,7 @@
   @media (hover:hover){ .case-card:hover .case-bottom p{ max-height:8em; margin-top:6px; opacity:1; transform:none; } }
   @media (hover:none){ .case-bottom p{ max-height:8em; margin-top:6px; opacity:1; transform:none; } }
   @media (max-width:1000px){ .project-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:600px){ .project-grid{ grid-template-columns:1fr; } .case-card{ aspect-ratio:4/4.6; } }
+  @media (max-width:600px){ .project-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .case-card{ aspect-ratio:4/5; } }
   .subsection-head{ display:flex; align-items:baseline; justify-content:space-between; gap:20px; margin:clamp(46px,7vw,80px) 0 22px; }
   .subsection-head h3{ font-size:clamp(22px,3vw,34px); }
   .subsection-head span{ font-size:12px; color:var(--muted); font-weight:600; }
@@ -283,8 +280,8 @@
   .creative-assistant-grid .case-card{ aspect-ratio:4/5; }
   .creative-assistant-grid .case-bottom h3{ font-size:clamp(16px,1.7vw,20px); }
   .creative-assistant-grid .case-bottom p{ font-size:11.5px; }
-  @media (max-width:700px){ .subsection-head{ flex-direction:column; align-items:flex-start; gap:6px; } .creative-assistant-grid{ grid-template-columns:repeat(4,minmax(170px,1fr)); overflow-x:auto; } }
-  @media (max-width:600px){ .creative-assistant-grid .case-card{ aspect-ratio:4/4.6; } }
+  @media (max-width:700px){ .subsection-head{ flex-direction:column; align-items:flex-start; gap:6px; } .creative-assistant-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); overflow:visible; } }
+  @media (max-width:600px){ .creative-assistant-grid .case-card{ aspect-ratio:4/5; } }
 
   /* ---- cursor label ---- */
   #cursor-label{ display:none; }
@@ -343,6 +340,10 @@
   .about h2{ font-size:clamp(28px,4vw,44px); margin-bottom:20px; }
   .about p{ color:var(--muted); font-size:16px; line-height:1.7; max-width:52ch; }
   .about p + p{ margin-top:16px; }
+  .about-word{ display:inline-block; position:relative; cursor:pointer; transition:transform .25s cubic-bezier(.2,.8,.2,1), color .25s ease; }
+  .about-word.is-selected{ z-index:1; color:var(--ink); transform:scale(1.18); }
+  .about-word:focus-visible{ outline:2px solid var(--metal-4); outline-offset:2px; }
+  @media (prefers-reduced-motion:reduce){ .about-word{ transition:none; } }
   .credit-list{ margin-top:26px; display:flex; flex-wrap:wrap; gap:10px; }
   .credit-list span{ font-size:12px; font-weight:600; background:var(--surface-2); padding:7px 13px; }
   @media (max-width:860px){
@@ -448,7 +449,7 @@
 <section class="hero" id="top">
   <div class="hero-media" id="hero-media">
     <div class="frame" data-label="assets/hero.mp4">
-      <video autoplay muted loop playsinline preload="auto" aria-label="Showreel hero video"
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Showreel hero video"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"
         onerror="this.closest('.frame').classList.add('is-placeholder')">
         <source src="assets/hero.mp4" type="video/mp4">
@@ -528,7 +529,7 @@
     <div class="reveal">
       <h2>About</h2>
       <!-- [EDIT] Replace with your own bio -->
-      <p>I am a storytelling geek based in Mumbai. The course of my journey has led me to discover my ability to capture moments and create enticing visuals out of them because the power of a sharp eye met with handling a camera well ascertains me to be able to tell a powerful story.</p>
+      <p class="about-copy">I am a storytelling geek based in Mumbai. The course of my journey has led me to discover my ability to capture moments and create enticing visuals out of them because the power of a sharp eye met with handling a camera well ascertains me to be able to tell a powerful story.</p>
       <div class="credit-list">
         <span>Clients: Brand, Label, Magazine</span>
         <span>Based in [City]</span>
@@ -726,7 +727,7 @@ function setScrollLock(key, on){
 /* ============ rendering ============ */
 
 function frameHTML(src, label){
-  return '<div class="frame" data-label="'+label+'"><img src="'+src+'" alt="" onerror="this.closest(\'.frame\').classList.add(\'is-placeholder\')"></div>';
+  return '<div class="frame" data-label="'+label+'"><img src="'+src+'" alt="" loading="lazy" decoding="async" onerror="this.closest(\'.frame\').classList.add(\'is-placeholder\')"></div>';
 }
 
 /* ============ video links (YouTube / Vimeo / Instagram / direct files) ============ */
@@ -756,7 +757,7 @@ function thumbCandidates(src, poster){
   return list;
 }
 function thumbImgHTML(cands){
-  return '<img src="'+cands[0]+'" data-alt="'+cands.slice(1).join('|')+'" alt="" onload="thumbLoaded(this)" onerror="thumbFallback(this)">';
+  return '<img src="'+cands[0]+'" data-alt="'+cands.slice(1).join('|')+'" alt="" loading="lazy" decoding="async" onload="thumbLoaded(this)" onerror="thumbFallback(this)">';
 }
 function thumbFrameHTML(cands, label){
   if(!cands.length) return '<div class="frame is-placeholder" data-label="'+label+'"></div>';
@@ -796,13 +797,6 @@ function renderProjectGrid(projects, targetId){
     card.addEventListener('mouseenter', function(){ document.getElementById('cursor-label').classList.add('show'); });
     card.addEventListener('mouseleave', function(){ document.getElementById('cursor-label').classList.remove('show'); });
   });
-  // phones have no hover: the card nearest the middle of the screen shows in colour
-  if('IntersectionObserver' in window){
-    const liveObs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ e.target.classList.toggle('is-live', e.isIntersecting); });
-    }, { rootMargin:'-30% 0px -30% 0px' });
-    grid.querySelectorAll('.case-card').forEach(function(c){ liveObs.observe(c); });
-  }
 }
 
 function renderProjects(){
@@ -819,7 +813,7 @@ function renderLiveEvents(){
     const src = mediaSrc(c);
     const kind = parseVideo(src).type;
     const preview = kind === 'file'
-      ? '<video src="'+src+'"'+(c.poster ? ' poster="'+c.poster+'"' : '')+' preload="auto" autoplay loop playsinline aria-label="Live event video preview" onerror="this.closest(\'.frame\').classList.add(\'is-placeholder\')"></video>'
+      ? '<video src="'+src+'"'+(c.poster ? ' poster="'+c.poster+'"' : '')+' preload="metadata" autoplay loop playsinline aria-label="Live event video preview" onerror="this.closest(\'.frame\').classList.add(\'is-placeholder\')"></video>'
       : thumbImgHTML(thumbCandidates(src, c.poster));
     return '<div class="item" data-video-index="'+i+'">'
       + '<div class="frame" data-label="'+(c.poster || src)+'">'+preview+'</div>'
@@ -1066,6 +1060,40 @@ function observeReveals(){
   document.querySelectorAll('.reveal:not(.in-view)').forEach(function(el){ revealObserver.observe(el); });
 }
 
+function enableAboutWordAnimation(){
+  const paragraph = document.querySelector('.about-copy');
+  if(!paragraph) return;
+  paragraph.replaceChildren.apply(paragraph, paragraph.textContent.split(/(\s+)/).map(function(part){
+    if(!part.trim()) return document.createTextNode(part);
+    const word = document.createElement('span');
+    word.className = 'about-word';
+    word.setAttribute('role', 'button');
+    word.setAttribute('tabindex', '0');
+    word.setAttribute('aria-pressed', 'false');
+    word.textContent = part;
+    return word;
+  }));
+  const activate = function(word){
+    const selected = paragraph.querySelector('.about-word.is-selected');
+    if(selected && selected !== word){
+      selected.classList.remove('is-selected');
+      selected.setAttribute('aria-pressed', 'false');
+    }
+    const isSelected = word.classList.toggle('is-selected');
+    word.setAttribute('aria-pressed', String(isSelected));
+  };
+  paragraph.addEventListener('click', function(e){
+    const word = e.target.closest('.about-word');
+    if(word) activate(word);
+  });
+  paragraph.addEventListener('keydown', function(e){
+    if(e.target.classList.contains('about-word') && (e.key === 'Enter' || e.key === ' ')){
+      e.preventDefault();
+      activate(e.target);
+    }
+  });
+}
+
 /* ============ header state + scroll progress + hero parallax ============ */
 const headerEl = document.getElementById('site-header');
 const heroMedia = document.getElementById('hero-media');
@@ -1119,6 +1147,7 @@ renderProduct();
 renderMarquee();
 renderHeroThumbs();
 observeReveals();
+enableAboutWordAnimation();
 fitWordmark();
 </script>
 
