@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0b0a">
-<title>Moksh Vora — Fashion, Live Events, Music Video</title>
+<title>Moksh Vora — Fashion, Live Events</title>
 
 <!--
   ============================================================
@@ -424,8 +424,6 @@
     <a href="#about">About</a>
     <a href="#fashion">Fashion</a>
     <a href="#live-events">Live Events</a>
-    <a href="#music-videos">Music Video</a>
-    <a href="#product">Product</a>
     <a href="#contact">Contact</a>
   </nav>
   <button class="menu-toggle" id="menu-open" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -440,8 +438,6 @@
     <a href="#about">About</a>
     <a href="#fashion">Fashion</a>
     <a href="#live-events">Live Events</a>
-    <a href="#music-videos">Music Video</a>
-    <a href="#product">Product</a>
     <a href="#contact">Contact</a>
   </div>
 </div>
@@ -531,11 +527,6 @@
       <h2>About</h2>
       <!-- [EDIT] Replace with your own bio -->
       <p class="about-copy">I am a storytelling geek based in Mumbai. The course of my journey has led me to discover my ability to capture moments and create enticing visuals out of them because the power of a sharp eye met with handling a camera well ascertains me to be able to tell a powerful story.</p>
-      <div class="credit-list">
-        <span>Clients: Brand, Label, Magazine</span>
-        <span>Based in [City]</span>
-        <span>Editorial, live events, video, product</span>
-      </div>
     </div>
   </div>
 </section>
@@ -574,28 +565,6 @@
   </div>
 </section>
 
-<!-- ================= MUSIC VIDEOS ================= -->
-<section class="work" id="music-videos">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Music Video</h2>
-      <span class="count">Direction &amp; cinematography</span>
-    </div>
-    <div class="mv-showcase" id="mv-strip"></div>
-  </div>
-</section>
-
-<!-- ================= PRODUCT ================= -->
-<section class="work" id="product">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Product</h2>
-      <span class="count">Studio &amp; still-life work</span>
-    </div>
-    <div class="product-grid" id="product-grid"></div>
-  </div>
-</section>
-
 <!-- ================= CONTACT ================= -->
 <footer id="contact">
   <div class="wrap">
@@ -604,7 +573,7 @@
       <div class="contact-info reveal">
         <a href="mailto:mokshcreates.in@gmail.com">mokshcreates.in@gmail.com</a>
         <a href="tel:+918454871977">+91 845 487 1977</a>
-        <p class="note">Based in [City] — available worldwide for editorial, live events, video, and product work.</p>
+        <p class="note">Based in Mumbai | IN <br> — available worldwide for editorial, live events, video, and product work.</p>
         <div class="socials">
           <a href="https://www.instagram.com/mokshxvora?stkn=NG8zemo2aTZlaDl1&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
         </div>
@@ -651,36 +620,30 @@
 const CATEGORIES = [
   { label:'About', href:'#about' },
   { label:'Fashion', href:'#fashion' },
-  { label:'Live Events', href:'#live-events' },
-  { label:'Music Video', href:'#music-videos' },
-  { label:'Product', href:'#product' }
+  { label:'Live Events', href:'#live-events' }
 ];
 
 // [EDIT] `videos` on a project can be a number (uses video-01.mp4, video-02.mp4 … in its folder)
 // or a list of links / files:  videos:['https://youtu.be/ID', { src:'https://www.instagram.com/reel/CODE/', poster:'assets/fashion/Dvaita/reel-poster.jpg' }]
 const FASHION_PROJECTS = [
-  { slug:'Dvaita',     title:'Dvaita',     tag:'SS26 Concept', icon:'&#10038;', date:'Mar 2026', credits:'Photography, Direction · Styling: [Name] · 2026', blurb:'inspired by Dvi, meaning two/dual. <br> We search for the divine beyond ourselves, only to discover that it has been quietly residing within!', count:6 },
-  { slug:'Viraasat',  title:'Viraasat ',  tag:'Editorial',    icon:'&#10038;', date:'Jan 2026', credits:'Photography · Styling: [Name] · 2025', blurb:'A legacy woven through generations, carried not just in silk, but in the stories, hands, and soul of those who keep it alive.', count:6, videos:['https://youtu.be/FjU7OW1mGw4'] },
-  { slug:'Matter', title:'Matter', tag:'Lookbook',     icon:'&#10038;', date:'Sep 2025', credits:'Photography · Styling: [Name] · 2025', blurb:'A study of presence, physique, and the quiet force that makes a body impossible to overlook.', count:6 },
-  { slug:'Lumina',  title:'Lumina',  tag:'Editorial',    icon:'&#9889;',  date:'Jul 2025', credits:'Photography, Direction · 2024', blurb:'A study of the human body as a living canvas! <br> the body becomes a memory of light, suspended in darkness.', count:6 },
-  { slug:'halcyon',       title:'Halcyon',       tag:'Campaign',     icon:'&#10038;', date:'Apr 2025', credits:'Photography · Client: [Brand] · 2024', blurb:'A quiet, sun-bleached take on resortwear.', count:6 },
-  { slug:'NEW FASHION CATALOGUE', title:'NEW CATALOGUE', tag:'Catalogue', icon:'&#10038;', date:'', credits:'', blurb:'', count:0 }
+  { slug:'Dvaita', title:'Dvaita', icon:'&#10038;', date:'Mar 2026', credits:'Photography, Direction · 2026', blurb:'inspired by Dvi, meaning two/dual. <br> We search for the divine beyond ourselves, only to discover that it has been quietly residing within!', count:6 },
+  { slug:'Viraasat', title:'Viraasat ', icon:'&#10038;', date:'Jan 2026', credits:'Photography, Direction  · 2026', blurb:'A legacy woven through generations, carried not just in silk, but in the stories, hands, and soul of those who keep it alive.', count:6, videos:['https://youtu.be/FjU7OW1mGw4'] },
+  { slug:'Matter', title:'Matter', icon:'&#10038;', date:'Sep 2026', credits:'Photography, Direction · 2026', blurb:'A study of presence, physique, and the quiet force that makes a body impossible to overlook.', count:6 },
+  { slug:'Lumina', title:'Lumina', icon:'&#9889;', date:'Jul 2026', credits:'Photography, Direction · 2026', blurb:'A study of the human body as a living canvas! <br> the body becomes a memory of light, suspended in darkness.', count:6 }
 ];
 
 const CREATIVE_ASSISTANT_PROJECTS = [
-  { slug:'creative-assistant/BUTTERFLY', title:'BUTTERFLY', tag:'Creative Assistant', icon:'&#10038;', date:'2026', photographer:'Nishant Gita', credits:'Photographer: Nishant Gita · Creative Assistant · 2026', blurb:'A compact catalogue of on-set details, styling, and visual support.', count:6 },
-  { slug:'creative-assistant/DHARMIK SAMANI', title:'DHARMIK SAMANI', tag:'Creative Assistant', icon:'&#10038;', date:'2025', photographer:'Real Vision', credits:'Photographer: Real Vision · Creative Assistant · 2025', blurb:'Behind-the-scenes imagery and quick visual studies from the set.', count:6 },
-  { slug:'creative-assistant/FLUID MECHANISM', title:'FLUID MECHANISM', tag:'Creative Assistant', icon:'&#10038;', date:'2026', photographer:'Nishant Gita', credits:'Photographer: Nishant Gita  · Creative Assistant · 2026', blurb:'A smaller edit focused on the process behind the finished frame.', count:6 },
-  { slug:'creative-assistant/KAALI', title:'KAALI', tag:'Creative Assistant', icon:'&#10038;', date:'2025', photographer:'Real Vision', credits:'Photographer: Real Vision · Creative Assistant · 2025', blurb:'A compact catalogue of on-set details, styling, and visual support.', count:3 }
+  { slug:'creative-assistant/BUTTERFLY', title:'BUTTERFLY', icon:'&#10038;', date:'2026', photographer:'Nishant Gita', credits:'Photographer: Nishant Gita · Creative Assistant · 2026', blurb:'A compact catalogue of on-set details, styling, and visual support.', count:6 },
+  { slug:'creative-assistant/DHARMIK SAMANI', title:'DHARMIK SAMANI', icon:'&#10038;', date:'2025', photographer:'Real Vision', credits:'Photographer: Real Vision · Creative Assistant · 2025', blurb:'Behind-the-scenes imagery and quick visual studies from the set.', count:6 },
+  { slug:'creative-assistant/FLUID MECHANISM', title:'FLUID MECHANISM', icon:'&#10038;', date:'2026', photographer:'Nishant Gita', credits:'Photographer: Nishant Gita  · Creative Assistant · 2026', blurb:'A smaller edit focused on the process behind the finished frame.', count:6 },
+  { slug:'creative-assistant/KAALI', title:'KAALI', icon:'&#10038;', date:'2025', photographer:'Real Vision', credits:'Photographer: Real Vision · Creative Assistant · 2025', blurb:'A compact catalogue of on-set details, styling, and visual support.', count:3 }
 ];
 
 const CELEBRITIES_AND_INFLUENCERS_PROJECTS = [
-  { slug:'Pankaj Tripathi', assetFolder:'assets/fashion/celebrities-and-influencers/Pankaj Tripathi', title:'Pankaj Tripathi', tag:'Campaign', icon:'&#9889;', date:'Nov 2025', credits:'Direction, Photography · Client: [Brand] · 2025', blurb:'Har ek nabz kala ke liye dhadakti hai, <br> dawa bhi woh joh jale par namak chidhakti hai.', count:6 },
-  { slug:'NEW CATALOGUE 01', assetFolder:'assets/fashion/celebrities-and-influencers/NEW CATALOGUE 01', title:'NEW CATALOGUE 01', tag:'Catalogue', icon:'&#10038;', date:'', credits:'', blurb:'', count:6 },
-  { slug:'NEW CATALOGUE 02', assetFolder:'assets/fashion/celebrities-and-influencers/NEW CATALOGUE 02', title:'NEW CATALOGUE 02', tag:'Catalogue', icon:'&#10038;', date:'', credits:'', blurb:'', count:6 },
-  { slug:'NEW CATALOGUE 03', assetFolder:'assets/fashion/celebrities-and-influencers/NEW CATALOGUE 03', title:'NEW CATALOGUE 03', tag:'Catalogue', icon:'&#10038;', date:'', credits:'', blurb:'', count:6 },
-  { slug:'NEW CATALOGUE 04', assetFolder:'assets/fashion/celebrities-and-influencers/NEW CATALOGUE 04', title:'NEW CATALOGUE 04', tag:'Catalogue', icon:'&#10038;', date:'', credits:'', blurb:'', count:6 },
-  { slug:'NEW CATALOGUE 05', assetFolder:'assets/fashion/celebrities-and-influencers/NEW CATALOGUE 05', title:'NEW CATALOGUE 05', tag:'Catalogue', icon:'&#10038;', date:'', credits:'', blurb:'', count:6 }
+  { slug:'Pankaj Tripathi', assetFolder:'assets/fashion/celebrities-and-influencers/Pankaj Tripathi', title:'Pankaj Tripathi', icon:'&#9889;', date:'Nov 2025', credits:'Direction, Photography · Client: [Brand] · 2025', blurb:'Har ek nabz kala ke liye dhadakti hai, <br> dawa bhi woh joh jale par namak chidhakti hai.', count:6 },
+  { slug:'Aahna Shrimali', assetFolder:'assets/fashion/celebrities-and-influencers/Aahna Shrimali', title:'Aahna Shrimali', icon:'&#9889;', date:'Dec 2025', credits:'Direction, Photography · Client: [Brand] · 2025', blurb:'A study of the human body as a living canvas! <br> the body becomes a memory of light, suspended in darkness.', count:6 },
+  { slug:'Chandni Solanki', assetFolder:'assets/fashion/celebrities-and-influencers/Chandni Solanki', title:'Chandni Solanki', icon:'&#9889;', date:'Jan 2026', credits:'Direction, Photography · Client: [Brand] · 2026', blurb:'A study of the human body as a living canvas! <br> the body becomes a memory of light, suspended in darkness.', count:6 },
+  { slug:'Sidiously', assetFolder:'assets/fashion/celebrities-and-influencers/Sidiously', title:'Sidiously', icon:'&#9889;', date:'Jan 2026', credits:'Direction, Photography · Client: [Brand] · 2026', blurb:'A study of the human body as a living canvas! <br> the body becomes a memory of light, suspended in darkness.', count:6 }
 ];
 
 // [EDIT] A clip's `src` (or `url`) can be a local file, YouTube link, or Instagram link:
@@ -695,25 +658,6 @@ const LIVE_EVENT_ITEMS = [
     const n = String(i + 1).padStart(2, '0');
     return { type:'photo', src:'assets/live-events/-'+n+'.jpg' };
   })
-];
-
-// [EDIT] By default each card plays assets/music-videos/<slug>.mp4. To use a link instead, add
-//   url:'https://www.youtube.com/watch?v=VIDEO_ID'   (or a Vimeo / Instagram reel link)
-// and optionally poster:'assets/music-videos/mv-01-poster.jpg' (needed for Vimeo / Instagram).
-const MUSIC_VIDEOS = [
-  { slug:'mv-01', title:'Track title — Artist', meta:'Director · 2026', stills:[
-    'assets/music-videos/mv-01-still-01.jpg',
-    'assets/music-videos/mv-01-still-02.jpg',
-    'assets/music-videos/mv-01-still-03.jpg',
-    'assets/music-videos/mv-01-still-04.jpg'
-  ] }
-];
-
-const PRODUCT_ITEMS = [
-  { src:'assets/product/01.jpg' }, { src:'assets/product/02.jpg' },
-  { src:'assets/product/03.jpg' }, { src:'assets/product/04.jpg' },
-  { src:'assets/product/05.jpg' }, { src:'assets/product/06.jpg' },
-  { src:'assets/product/07.jpg' }, { src:'assets/product/08.jpg' }
 ];
 
 const MARQUEE_ITEMS = ['CURIOSITY','CREATIVITY','COLLABORATION','CULTURE','CONNECTION'];
@@ -782,15 +726,16 @@ function renderCategories(){
   }).join('');
 }
 
-function renderProjectGrid(projects, targetId){
+function renderProjectGrid(projects, targetId, showDescription){
   const grid = document.getElementById(targetId);
   grid.innerHTML = projects.map(function(p, i){
     const folder = projectAssetFolder(p);
+    const descriptionMarkup = showDescription === false || !p.blurb ? '' : '<p>'+p.blurb+'</p>';
     return '<div class="case-card reveal" style="transition-delay:'+(i*0.05)+'s" data-idx="'+i+'">'
       + frameHTML(folder+'/cover.jpg', folder+'/cover.jpg')
       + '<div class="tint"></div><div class="tint-glow"></div>'
       + '<div class="case-inner">'
-        + '<div class="case-bottom"><h3>'+p.title+'</h3>'+(p.photographer ? '<span class="case-photographer">Photographer: '+p.photographer+'</span>' : '')+'<p>'+p.blurb+'</p></div>'
+        + '<div class="case-bottom"><h3>'+p.title+'</h3>'+(p.photographer ? '<span class="case-photographer">Photographer: '+p.photographer+'</span>' : '')+descriptionMarkup+'</div>'
       + '</div></div>';
   }).join('');
   grid.querySelectorAll('.case-card').forEach(function(card){
@@ -799,7 +744,7 @@ function renderProjectGrid(projects, targetId){
     const description = card.querySelector('.case-bottom p');
     const cancelHold = function(){ clearTimeout(holdTimer); };
     card.addEventListener('pointerdown', function(e){
-      if(e.pointerType !== 'touch' || !description.textContent.trim()) return;
+      if(e.pointerType !== 'touch' || !description || !description.textContent.trim()) return;
       didHold = false;
       holdTimer = setTimeout(function(){
         didHold = true;
@@ -825,9 +770,9 @@ function renderProjectGrid(projects, targetId){
 }
 
 function renderProjects(){
-  renderProjectGrid(FASHION_PROJECTS, 'project-grid');
-  renderProjectGrid(CREATIVE_ASSISTANT_PROJECTS, 'creative-assistant-grid');
-  renderProjectGrid(CELEBRITIES_AND_INFLUENCERS_PROJECTS, 'celebrities-influencers-grid');
+  renderProjectGrid(FASHION_PROJECTS, 'project-grid', true);
+  renderProjectGrid(CREATIVE_ASSISTANT_PROJECTS, 'creative-assistant-grid', true);
+  renderProjectGrid(CELEBRITIES_AND_INFLUENCERS_PROJECTS, 'celebrities-influencers-grid', false);
 }
 
 function renderLiveEvents(){
@@ -859,34 +804,6 @@ function renderLiveEvents(){
   }
   document.getElementById('live-grid').innerHTML = shuffledPhotos.map(function(c){
     return '<div class="item" onclick="openLightboxSrc(this.firstElementChild)">' + frameHTML(c.src, c.src) + '</div>';
-  }).join('');
-}
-
-function renderMusicVideos(){
-  const grid = document.getElementById('mv-strip');
-  grid.innerHTML = MUSIC_VIDEOS.map(function(v){
-    const link = v.url || 'assets/music-videos/'+v.slug+'.mp4';
-    const poster = v.poster || 'assets/music-videos/'+v.slug+'-poster.jpg';
-    const stills = (v.stills || []).map(function(src, index){
-      return '<div class="frame" data-label="'+src+'" onclick="openLightboxSrc(this)">'
-        + '<img src="'+src+'" alt="'+v.title+' — still '+(index + 1)+'" onerror="this.closest(\'.frame\').classList.add(\'is-placeholder\')">'
-        + '</div>';
-    }).join('');
-    return '<div class="mv-card">'
-      + '<div class="mv-thumb" onclick="openVideo(\''+link+'\')">'
-      + thumbFrameHTML(thumbCandidates(link, poster), poster)
-      + '<span class="play-btn"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="currentColor"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>Play</span>'
-      + '</div>'
-      + '<div class="mv-meta"><h3>'+v.title+'</h3><span>'+v.meta+'</span></div>'
-      + (stills ? '<div class="mv-stills">'+stills+'</div>' : '')
-      + '</div>';
-  }).join('');
-}
-
-function renderProduct(){
-  const grid = document.getElementById('product-grid');
-  grid.innerHTML = PRODUCT_ITEMS.map(function(p){
-    return '<div class="item" onclick="openLightboxSrc(this.firstElementChild)">' + frameHTML(p.src, p.src) + '</div>';
   }).join('');
 }
 
@@ -985,18 +902,23 @@ function fashionVideos(project){
 }
 
 function openCatalogue(project){
-  document.getElementById('cat-tag').innerHTML = project.icon+' '+project.tag;
+  const tagEl = document.getElementById('cat-tag');
+  const tagText = project.tag ? project.icon+' '+project.tag : '';
+  tagEl.innerHTML = tagText;
+  tagEl.style.display = tagText ? 'block' : 'none';
   document.getElementById('cat-title').textContent = project.title;
   document.getElementById('cat-credits').textContent = project.credits;
   const gallery = document.getElementById('cat-gallery');
   gallery.classList.toggle('kaali-catalogue', project.slug === 'creative-assistant/KAALI');
   let imgs = '';
-  for(let i=1;i<=project.count;i++){
-    const n = i < 10 ? '0'+i : ''+i;
-    const src = projectAssetFolder(project)+'/'+n+'.jpg';
-    imgs += '<div class="frame reveal" data-label="'+src+'" onclick="openLightboxSrc(this)">'
-      + '<img src="'+src+'" alt="'+project.title+' — image '+n+'" onerror="this.closest(\'.frame\').classList.add(\'is-placeholder\')">'
-      + '</div>';
+  if(project.slug !== 'Viraasat'){
+    for(let i=1;i<=project.count;i++){
+      const n = i < 10 ? '0'+i : ''+i;
+      const src = projectAssetFolder(project)+'/'+n+'.jpg';
+      imgs += '<div class="frame reveal" data-label="'+src+'" onclick="openLightboxSrc(this)">'
+        + '<img src="'+src+'" alt="'+project.title+' — image '+n+'" onerror="this.closest(\'.frame\').classList.add(\'is-placeholder\')">'
+        + '</div>';
+    }
   }
   const videos = fashionVideos(project).map(function(vd, index){
     return { data:vd, parsed:parseVideo(vd.src), index:index };
@@ -1170,8 +1092,6 @@ bindCategoryPillHandlers();
 setActiveCat(0);
 renderProjects();
 renderLiveEvents();
-renderMusicVideos();
-renderProduct();
 renderMarquee();
 renderHeroThumbs();
 observeReveals();
